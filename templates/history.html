@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="container wide">
+    <h1>Detection History</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>File</th>
+            <th>Result</th>
+            <th>Confidence</th>
+            <th>Action</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in records %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ "%.2f"|format(row[3]) }}%</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6">No detections yet.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="link" href="/">Back to Detection</a>
+</div>
+</body>
+</html>
