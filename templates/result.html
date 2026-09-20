@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Detection Result</h1>
+
+    <div class="result {{ 'danger' if result == 'AI-GENERATED' else 'safe' }}">
+        <h2>{{ result }}</h2>
+        <p>Confidence: <strong>{{ confidence }}%</strong></p>
+        <p>Security Action: <strong>{{ action }}</strong></p>
+    </div>
+
+    {% if result == "AI-GENERATED" %}
+        <p class="warning">Possible voice-cloning attack detected. Authentication has been blocked.</p>
+    {% else %}
+        <p class="success">Voice classified as genuine. Authentication can continue.</p>
+    {% endif %}
+
+    <a class="link" href="/">Analyze Another Voice</a>
+    <a class="link" href="/history">View History</a>
+</div>
+</body>
+</html>

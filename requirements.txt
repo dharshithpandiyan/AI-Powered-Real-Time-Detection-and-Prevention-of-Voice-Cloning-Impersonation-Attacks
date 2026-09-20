@@ -1,0 +1,13 @@
+Flask
+fastapi
+uvicorn[standard]
+python-multipart
+numpy
+librosa
+scikit-learn
+tensorflow
+soundfile
+matplotlib
+pandas
+scipy
+sounddevice
